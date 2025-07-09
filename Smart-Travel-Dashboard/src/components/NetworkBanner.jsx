@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { AlertTriangle, Wifi, WifiOff } from 'lucide-react';
 
@@ -29,7 +28,6 @@ export default function NetworkBanner() {
     };
   }, []);
 
-  
   if (!isOnline) {
     return (
       <div className="bg-red-100 dark:bg-red-900/20 border-b border-red-200 dark:border-red-800">
@@ -43,7 +41,6 @@ export default function NetworkBanner() {
     );
   }
 
-  
   if (networkType && (networkType === '2g' || networkType === 'slow-2g')) {
     return (
       <div className="bg-yellow-100 dark:bg-yellow-900/20 border-b border-yellow-200 dark:border-yellow-800">
@@ -59,7 +56,6 @@ export default function NetworkBanner() {
     );
   }
 
-  
   if (networkType === '4g') {
     return (
       <div className="bg-green-100 dark:bg-green-900/20 border-b border-green-200 dark:border-green-800">

@@ -1,54 +1,57 @@
 # Smart Travel Dashboard
 
-Welcome! This project is a showcase of modern web APIs in a real-world React app. It demonstrates how to build a user-friendly dashboard that adapts to your environment and location, using:
+Welcome! This project is a showcase of modern web APIs and modern React animation in a real-world dashboard. It demonstrates how to build a user-friendly, visually engaging dashboard that adapts to your environment and location, using:
 
 - **Geolocation API**
 - **Network Information API**
-- **Canvas API**
 - **OpenWeatherMap API**
+- **React Spring Animations**
+- **Google Gemini AI (Travel Suggestions)**
+- **React Leaflet (Interactive Map)**
 
 ## 🌍 What does it do?
-- Detects your location and shows your coordinates and accuracy
-- Plots your position on a map of India (Canvas API)
-- Fetches and displays live weather for your location
-- Detects your network speed/type and warns if slow or offline
-- Automatically switches between light and dark mode based on time
+- Detects your location and shows your coordinates and accuracy (with animated map pin)
+- Plots your position on a live interactive map (React Leaflet)
+- Fetches and displays live weather for your location (with animated sun/cloud card)
+- Detects your network speed/type and warns if slow or offline (with animated WiFi card)
+- Lets you save, nickname, and export your travel history
+- Shows beautiful, AI-powered travel suggestions for your area (Gemini API)
+- Automatically switches between light and dark mode based on time, with manual theme toggle
+- Fully responsive, modern UI with smooth SVG animations (React Spring)
 
-## 🔎 APIs Used (and how they're used)
+## ✨ Features Included
+- **Animated Weather Card:** Modern sun/cloud animation (React Spring)
+- **Animated Network Card:** WiFi icon with smooth pulse (React Spring)
+- **Animated Location Card:** Bouncing map pin (React Spring)
+- **Live Interactive Map:** See your real-time location and travel history
+- **Travel History:** Save, nickname, delete, and export places you visit
+- **Gemini AI Suggestions:** Get beautiful, AI-powered travel ideas for your current location
+- **Auto Dark Mode & Theme Toggle:** Automatic and manual theme switching
+- **Responsive & Modern UI:** Mobile-friendly, beautiful design
 
-### 1. Geolocation API
-- **Purpose:** Get the user's current latitude, longitude, and accuracy
-- **How:** Prompts for permission, then displays your coordinates and accuracy, and powers weather/map features
-
-### 2. Network Information API
-- **Purpose:** Detects your connection type (4G/3G/2G), speed, and if Data Saver is on
-- **How:** Shows a warning if your connection is slow or offline, and displays details in the dashboard
-- **Note:** Supported in most Chromium browsers (Chrome, Edge, Opera, etc.)
-
-### 3. Canvas API
-- **Purpose:** Draws a map of India and plots your location as a pin
-- **How:** Converts your coordinates to a position on the image, draws a red pin and label
-
-### 4. OpenWeatherMap API
-- **Purpose:** Fetches live weather data for your current location
-- **How:** Uses your coordinates to get temperature, condition, humidity, wind speed, and city name
-- **Setup:** Add your API key in a `.env` file as `VITE_WEATHER_API_KEY`
-
-## 🛠️ Tech Stack
-- React 19, Vite, Tailwind CSS 3
-- Modern browser APIs (see above)
+## 🔎 APIs & Tech Used
+- **Geolocation API:** Get your current latitude, longitude, and accuracy
+- **Network Information API:** Detects your connection type, speed, and Data Saver
+- **OpenWeatherMap API:** Fetches live weather data for your location
+- **React Spring:** Smooth, modern SVG animations for all main cards
+- **Google Gemini AI:** AI-powered travel suggestions for your area
+- **React Leaflet:** Interactive map for live location and history
+- **Local Storage:** Save and manage travel history
+- **Tailwind CSS 3:** Modern, utility-first styling
 
 ## 🚦 How to run
 1. `npm install`
-2. Add your OpenWeatherMap API key to `.env` (see above)
-3. `npm run dev`
-4. Open [http://localhost:5173](http://localhost:5173)
+2. Add your OpenWeatherMap API key to `.env` as `VITE_WEATHER_API_KEY`
+3. Add your Gemini API key to the Gemini component if you want AI suggestions
+4. `npm run dev`
+5. Open [http://localhost:5173](http://localhost:5173)
 
 ## 📋 Notes for the Interviewer
 - The app is fully responsive and works on desktop/mobile
 - All features degrade gracefully if an API is not supported
 - Code is organized for clarity: components, hooks, and config are separated
 - User experience is prioritized: loading states, error handling, and accessibility are built-in
+- Animations are implemented with React Spring for performance and style
 
 ---
-**This project is a practical demonstration of how to use real browser APIs to create a smart, adaptive web app.**
+**This project is a practical demonstration of how to use real browser APIs, modern React, and animation to create a smart, adaptive, and beautiful web app.**

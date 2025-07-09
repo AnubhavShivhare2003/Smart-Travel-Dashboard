@@ -1,36 +1,55 @@
+// src/components/FeaturesList.jsx
 import React from 'react';
-import { CheckCircle2, MapPin, Cloud, Wifi, Palette, Globe } from 'lucide-react';
+import { CheckCircle2, MapPin, Cloud, Wifi, Palette, Globe, List } from 'lucide-react';
 
 const features = [
   {
-    name: 'Geolocation-Based Mapping',
-    description: 'Real-time location detection using browser geolocation API',
+    name: 'Live Location on Interactive Map',
+    description: 'See your real-time location on a dynamic map using React Leaflet',
     icon: MapPin,
     color: 'text-green-500'
   },
   {
+    name: 'Travel History',
+    description: 'Save, nickname, and manage all places you visit. View, delete, and export your travel history.',
+    icon: List,
+    color: 'text-orange-500'
+  },
+  {
     name: 'Live Weather Info',
-    description: 'Current weather data from OpenWeatherMap API',
+    description: 'Current weather data for your location from OpenWeatherMap, with animated sun/cloud card (React Spring)',
     icon: Cloud,
     color: 'text-blue-500'
   },
   {
-    name: 'India Map with Canvas Pin',
-    description: 'Interactive map showing your location on India',
-    icon: Globe,
+    name: 'Network Speed Detection',
+    description: 'Real-time network connection monitoring and status, with animated WiFi card (React Spring)',
+    icon: Wifi,
     color: 'text-purple-500'
   },
   {
-    name: 'Network Speed Detection',
-    description: 'Real-time network connection monitoring',
-    icon: Wifi,
-    color: 'text-orange-500'
+    name: 'Animated Location Card',
+    description: 'Modern animated map pin card (React Spring) showing your coordinates and accuracy',
+    icon: MapPin,
+    color: 'text-cyan-500'
   },
   {
-    name: 'Auto Dark Mode',
-    description: 'Automatic theme switching (6 PM – 6 AM)',
+    name: 'Gemini AI Travel Suggestions',
+    description: 'Get beautiful, AI-powered travel ideas for your current location (Google Gemini API)',
+    icon: Globe,
+    color: 'text-pink-500'
+  },
+  {
+    name: 'Auto Dark Mode & Theme Toggle',
+    description: 'Automatic dark mode (6 PM – 6 AM) and manual theme switch',
     icon: Palette,
     color: 'text-indigo-500'
+  },
+  {
+    name: 'Responsive & Modern UI',
+    description: 'Beautiful, mobile-friendly design with consistent card layout and smooth animations',
+    icon: Globe,
+    color: 'text-emerald-500'
   },
 ];
 
@@ -69,16 +88,21 @@ export default function FeaturesList() {
           })}
         </div>
         
+        {/* API Status */}
         <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
           <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 text-center">
-            Web APIs Used
+            Web APIs & Tech Used
           </h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { name: 'Geolocation API', status: 'Supported' },
               { name: 'Network Information API', status: 'Supported' },
-              { name: 'Canvas API', status: 'Supported' },
-              { name: 'Intersection Observer', status: 'Supported' }
+              { name: 'OpenWeatherMap API', status: 'Supported' },
+              { name: 'React Spring Animations', status: 'Yes' },
+              { name: 'React Leaflet (Map)', status: 'Supported' },
+              { name: 'Google Gemini AI', status: 'Supported' },
+              { name: 'Local Storage', status: 'Supported' },
+              { name: 'Responsive Design', status: 'Yes' }
             ].map((api, index) => (
               <div key={index} className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <p className="text-sm font-medium text-gray-800 dark:text-white">{api.name}</p>

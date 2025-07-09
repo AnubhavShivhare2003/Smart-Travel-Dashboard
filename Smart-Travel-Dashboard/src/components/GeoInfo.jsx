@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, Navigation, Loader2, AlertCircle } from 'lucide-react';
+import { useSpring, animated, config } from '@react-spring/web';
 
 export default function GeoInfo() {
   const [location, setLocation] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // React Spring hook at top level
+  const pinSpring = useSpring({
+    from: { y: -60 },
+    to: { y: 0 },
+    config: config.wobbly,
+    loop: { reverse: true },
+  });
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -47,7 +56,20 @@ export default function GeoInfo() {
   return (
     <div className="card animate-fade-in">
       <div className="card-header">
-        <MapPin className="text-green-500" size={24} />
+        {/* <MapPin className="text-green-500" size={24} /> */}
+        <div className="w-24 h-24 flex items-center justify-center bg-transparent relative overflow-visible">
+          {/* Animated Pin Drop */}
+          <animated.div
+            style={pinSpring}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow-lg"
+          >
+            <svg width="40" height="56" viewBox="0 0 40 56" fill="none">
+              <ellipse cx="20" cy="20" rx="16" ry="16" fill="#38bdf8" stroke="#fff" strokeWidth="3" />
+              <rect x="10" y="28" width="20" height="16" rx="8" fill="#0ea5e9" stroke="#fff" strokeWidth="3" />
+              <ellipse cx="20" cy="20" rx="6" ry="6" fill="#fff" />
+            </svg>
+          </animated.div>
+        </div>
         Your Location
       </div>
       
@@ -96,7 +118,7 @@ export default function GeoInfo() {
               </div>
             </div>
 
-           
+            {/* Accuracy Information */}
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-500 dark:text-gray-400">Accuracy</span>
@@ -109,7 +131,7 @@ export default function GeoInfo() {
               </p>
             </div>
 
-            
+            {/* Copy Coordinates Button */}
             <button
               onClick={() => {
                 navigator.clipboard.writeText(

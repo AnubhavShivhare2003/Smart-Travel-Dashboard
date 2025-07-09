@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Cloud, Thermometer, MapPin, Loader2 } from 'lucide-react';
+import { useSpring, animated, config } from '@react-spring/web';
 
 export default function WeatherInfo() {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_KEY = 'd07bc4f29f14e466d7e4e48b17f08c2d'; // 🔑 Replace this with your actual key
+  const sunSpring = useSpring({
+    loop: true,
+    from: { rotateZ: 0 },
+    to: { rotateZ: 360 },
+    config: { duration: 4000 },
+  });
+  const cloudSpring = useSpring({
+    loop: { reverse: true },
+    from: { x: -10 },
+    to: { x: 10 },
+    config: config.slow,
+  });
+
+  const API_KEY = 'd07bc4f29f14e466d7e4e48b17f08c2d';
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -71,13 +85,39 @@ export default function WeatherInfo() {
         
         {weather && (
           <div className="space-y-4">
-           <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <img
-                  src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-                  alt={weather.condition}
-                  className="w-16 h-16"
-                />
+                <div className="w-24 h-24 flex items-center justify-center bg-transparent relative overflow-visible">
+                  <animated.div
+                    style={sunSpring}
+                    className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 drop-shadow-lg"
+                  >
+                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                      <circle cx="28" cy="28" r="14" fill="#FFD700" />
+                      {[...Array(8)].map((_, i) => (
+                        <rect
+                          key={i}
+                          x="27"
+                          y="2"
+                          width="2"
+                          height="8"
+                          fill="#FFD700"
+                          opacity="0.7"
+                          transform={`rotate(${i * 45} 28 28)`}
+                        />
+                      ))}
+                    </svg>
+                  </animated.div>
+                  <animated.div
+                    style={{ x: cloudSpring.x }}
+                    className="absolute left-1/2 top-2/3 -translate-x-1/2 -translate-y-1/2 drop-shadow-md"
+                  >
+                    <svg width="70" height="36" viewBox="0 0 70 36" fill="none">
+                      <ellipse cx="28" cy="18" rx="22" ry="10" fill="#e0e7ef" />
+                      <ellipse cx="50" cy="14" rx="14" ry="8" fill="#c7d2fe" />
+                    </svg>
+                  </animated.div>
+                </div>
                 <div>
                   <div className="flex items-center gap-2 text-2xl font-bold text-gray-800 dark:text-white">
                     <Thermometer className="text-red-500" size={24} />
