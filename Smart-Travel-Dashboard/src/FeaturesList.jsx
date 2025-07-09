@@ -1,4 +1,3 @@
-// src/components/FeaturesList.jsx
 import React from 'react';
 import { CheckCircle2, MapPin, Cloud, Wifi, Palette, Globe } from 'lucide-react';
 
@@ -70,7 +69,6 @@ export default function FeaturesList() {
           })}
         </div>
         
-        {/* API Status */}
         <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
           <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 text-center">
             Web APIs Used

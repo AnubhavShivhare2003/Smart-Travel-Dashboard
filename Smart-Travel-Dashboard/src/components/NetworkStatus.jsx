@@ -1,4 +1,4 @@
-// src/components/NetworkStatus.jsx
+
 import React, { useEffect, useState } from 'react';
 import { Wifi, WifiOff, Signal, Loader2 } from 'lucide-react';
 
@@ -84,7 +84,6 @@ export default function NetworkStatus() {
           </div>
         ) : (
           <div className="space-y-4">
-            {/* Connection Type */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 {getConnectionIcon(networkInfo.effectiveType)}
@@ -101,7 +100,6 @@ export default function NetworkStatus() {
               </span>
             </div>
 
-            {/* Network Details */}
             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="text-center">
                 <p className="text-sm text-gray-500 dark:text-gray-400">Download Speed</p>
@@ -117,7 +115,6 @@ export default function NetworkStatus() {
               </div>
             </div>
 
-            {/* Data Saver Mode */}
             {networkInfo.saveData && (
               <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
                 <div className="flex items-center gap-2">

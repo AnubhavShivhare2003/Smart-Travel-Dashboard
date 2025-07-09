@@ -1,4 +1,3 @@
-// src/components/GeoInfo.jsx
 import React, { useEffect, useState } from 'react';
 import { MapPin, Navigation, Loader2, AlertCircle } from 'lucide-react';
 
@@ -97,7 +96,7 @@ export default function GeoInfo() {
               </div>
             </div>
 
-            {/* Accuracy Information */}
+           
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-500 dark:text-gray-400">Accuracy</span>
@@ -110,7 +109,7 @@ export default function GeoInfo() {
               </p>
             </div>
 
-            {/* Copy Coordinates Button */}
+            
             <button
               onClick={() => {
                 navigator.clipboard.writeText(

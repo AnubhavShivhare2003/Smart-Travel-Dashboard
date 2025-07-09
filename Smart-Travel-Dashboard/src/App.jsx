@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from 'react';
 import GeoInfo from './components/GeoInfo';
 import NetworkStatus from './components/NetworkStatus';
@@ -13,7 +12,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500">
-      {/* Header */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 to-purple-600/10 dark:from-primary-400/20 dark:to-purple-400/20"></div>
         <div className="relative z-10 container mx-auto px-6 py-8">
@@ -26,40 +24,32 @@ export default function App() {
         </div>
       </header>
 
-      {/* Network Banner */}
       <NetworkBanner />
 
-      {/* Main Content */}
       <main className="container mx-auto px-6 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
-          {/* Weather Info */}
           <div className="lg:col-span-1 xl:col-span-1">
             <WeatherInfo />
           </div>
 
-          {/* Network Status */}
           <div className="lg:col-span-1 xl:col-span-1">
             <NetworkStatus />
           </div>
 
-          {/* Geo Info */}
           <div className="lg:col-span-1 xl:col-span-1">
             <GeoInfo />
           </div>
         </div>
 
-        {/* Location Canvas - Full Width */}
         <div className="mb-8">
           <LocationCanvas />
         </div>
 
-        {/* Features List */}
         <div className="flex justify-center">
           <FeaturesList />
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="mt-16 py-8 border-t border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-6 text-center">
           <p className="text-gray-600 dark:text-gray-400">

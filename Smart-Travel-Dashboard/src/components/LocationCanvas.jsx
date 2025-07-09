@@ -1,5 +1,3 @@
-
-// src/components/LocationCanvas.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import { Map, Loader2, AlertCircle } from 'lucide-react';
 
@@ -10,7 +8,6 @@ export default function LocationCanvas() {
   const [loading, setLoading] = useState(true);
   const mapImage = useRef(new Image());
 
-  // Load India map image (JPG)
   useEffect(() => {
     mapImage.current.src = '/india-map.jpg';
 
@@ -26,7 +23,6 @@ export default function LocationCanvas() {
     };
   }, []);
 
-  // Get user coordinates
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -42,32 +38,27 @@ export default function LocationCanvas() {
     );
   }, []);
 
-  // Draw map and pin on canvas
-  const drawCanvas = () => {
+ const drawCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Draw the map image
-    ctx.drawImage(mapImage.current, 0, 0, canvas.width, canvas.height);
+       ctx.drawImage(mapImage.current, 0, 0, canvas.width, canvas.height);
 
     if (coords) {
-      // Improved: Account for map image margins for better accuracy
       const minLat = 8, maxLat = 37, minLon = 68, maxLon = 97;
       const marginX = 0.05 * canvas.width;
       const marginY = 0.05 * canvas.height;
       const usableWidth = canvas.width - 2 * marginX;
       const usableHeight = canvas.height - 2 * marginY;
 
-      // Apply offsets to move the pin left and up
-      const offsetX = 15; // pixels to move left
-      const offsetY = 25; // pixels to move up (increased from 10)
+      const offsetX = 15; 
+      const offsetY = 25; 
       const x = marginX + ((coords.longitude - minLon) / (maxLon - minLon)) * usableWidth - offsetX;
       const y = marginY + ((maxLat - coords.latitude) / (maxLat - minLat)) * usableHeight - offsetY;
 
-      // Draw location pin
       ctx.beginPath();
       ctx.arc(x, y, 8, 0, 2 * Math.PI);
       ctx.fillStyle = '#ef4444';
@@ -76,13 +67,11 @@ export default function LocationCanvas() {
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // Add shadow effect
       ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
       ctx.shadowBlur = 4;
       ctx.shadowOffsetX = 2;
       ctx.shadowOffsetY = 2;
 
-      // Draw label background
       const labelText = 'You are here';
       ctx.font = '14px Inter, sans-serif';
       ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
@@ -92,19 +81,17 @@ export default function LocationCanvas() {
       
       ctx.fillRect(x + 10, y - 25, labelWidth, labelHeight);
       
-      // Reset shadow
       ctx.shadowColor = 'transparent';
       ctx.shadowBlur = 0;
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
 
-      // Draw label text
       ctx.fillStyle = '#ffffff';
       ctx.fillText(labelText, x + 16, y - 12);
     }
   };
 
-  // Redraw when coords update
+  
   useEffect(() => {
     if (mapImage.current.complete && coords && !loading) {
       drawCanvas();

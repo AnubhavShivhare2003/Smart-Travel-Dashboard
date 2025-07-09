@@ -1,4 +1,3 @@
-// src/components/WeatherInfo.jsx
 import React, { useEffect, useState } from 'react';
 import { Cloud, Thermometer, MapPin, Loader2 } from 'lucide-react';
 
@@ -72,8 +71,7 @@ export default function WeatherInfo() {
         
         {weather && (
           <div className="space-y-4">
-            {/* Main Weather Display */}
-            <div className="flex items-center justify-between">
+           <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <img
                   src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
@@ -92,13 +90,11 @@ export default function WeatherInfo() {
               </div>
             </div>
 
-            {/* Location */}
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
               <MapPin className="text-gray-400" size={16} />
               <span className="font-medium">{weather.city}, {weather.country}</span>
             </div>
 
-            {/* Additional Weather Details */}
             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="text-center">
                 <p className="text-sm text-gray-500 dark:text-gray-400">Humidity</p>
