@@ -44,7 +44,7 @@ Welcome! This project is a showcase of modern web APIs and modern React animatio
 2. Add your OpenWeatherMap API key to `.env` as `VITE_WEATHER_API_KEY`
 3. Add your Gemini API key to the Gemini component if you want AI suggestions
 4. `npm run dev`
-5. Open [http://localhost:5173](http://localhost:5173)
+5. Open [https://smart-travel-dashboard.vercel.app/](https://smart-travel-dashboard.vercel.app/)
 
 ## 📋 Notes for the Interviewer
 - The app is fully responsive and works on desktop/mobile
