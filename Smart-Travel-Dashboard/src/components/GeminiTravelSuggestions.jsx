@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, Loader2, AlertCircle, Sparkles } from 'lucide-react';
 
-const GEMINI_API_KEY = 'AIzaSyCowUbrCLivE9CM_7kvrjymS59UIfStmY4';
+const GEMINI_API_KEY = 'AIzaSyAKmuKUZvsr4yBVCq47YlZRL6O8VHi2nJ4';
 const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
 
 export default function GeminiTravelSuggestions() {
